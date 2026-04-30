@@ -1,71 +1,191 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Baavya | Portfolio</title>
-  <link rel="stylesheet" href="style.css" />
-  <script defer src="script.js"></script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>TaskFlow | Productivity Workspace</title>
+
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,
+<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'>
+<circle cx='50' cy='50' r='45' fill='%236366f1'/>
+<path d='M28 50 L44 66 L72 34' stroke='white' stroke-width='10' fill='none'/>
+</svg>">
+
+<link rel="stylesheet" href="style.css">
 </head>
-<body>
 
-  <header>
-    <h1>Baavya Medharamitla</h1>
-    <nav>
-      <a href="#about">About</a>
-      <a href="#projects">Projects</a>
-      <a href="#contact">Contact</a>
-    </nav>
-  </header>
+<body class="dark">
 
-  <section id="about" class="section">
-    <h2>🚀 About Me</h2>
-    <p>I'm an aspiring web developer with a passion for building responsive, creative, and meaningful web applications.</p>
-  </section>
+<!-- Background -->
+<div class="bg-wrapper">
+<div class="sphere s1"></div>
+<div class="sphere s2"></div>
+<div class="sphere s3"></div>
+<canvas id="particles"></canvas>
+</div>
 
-  <section id="projects" class="section">
-    <h2>💻 Projects</h2>
+<!-- NAV -->
+<nav class="navbar">
 
-    <div class="project-card">
-      <h3>📒 Notes App (LocalStorage)</h3>
-      <div class="note-box">
-        <input type="text" id="noteInput" placeholder="Type your note here..." />
-        <button onclick="addNote()">Add Note</button>
-        <div id="noteList"></div>
-      </div>
-    </div>
+<div class="logo-box">
+<div class="logo-icon"></div>
+<span>TaskFlow</span>
+</div>
 
-    <div class="project-card">
-      <h3>🛒 Product Listing</h3>
-      <div class="controls">
-        <select id="categoryFilter" onchange="filterProducts()">
-          <option value="all">All</option>
-          <option value="gadgets">Gadgets</option>
-          <option value="books">Books</option>
-        </select>
-        <select id="sortPrice" onchange="sortProducts()">
-          <option value="">Sort by Price</option>
-          <option value="asc">Low to High</option>
-          <option value="desc">High to Low</option>
-        </select>
-      </div>
-      <div id="productGrid" class="grid"></div>
-    </div>
-  </section>
+<div class="nav-links">
+<a href="#about">About</a>
+<a href="#workspace">Workspace</a>
+<a href="#contact">Contact</a>
+</div>
 
-  <section id="contact" class="section">
-    <h2>📬 Contact Me</h2>
-    <form>
-      <input type="text" placeholder="Your Name" required />
-      <input type="email" placeholder="Your Email" required />
-      <textarea placeholder="Your Message" rows="4"></textarea>
-      <button type="submit">Send Message</button>
-    </form>
-  </section>
+<button id="themeToggle" class="theme-toggle">
+<div class="toggle-circle"></div>
+</button>
 
-  <footer>
-    <p>© 2025 Baavya | Built with JavaScript</p>
-  </footer>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+
+<div class="hero-left">
+
+<span class="badge">SMART PRODUCTIVITY SYSTEM</span>
+
+<h1>
+Organize Smarter.<br>
+Build Faster.
+</h1>
+
+<p>
+TaskFlow is a premium productivity workspace for managing
+notes, tasks, and product workflows with intelligent local persistence.
+</p>
+
+<div class="hero-buttons">
+<button onclick="scrollToWorkspace()" class="primary-btn">Launch Workspace</button>
+<button class="secondary-btn">Explore Features</button>
+</div>
+
+<div class="stats">
+<div>
+<h2 id="taskCount">0</h2>
+<span>Tasks</span>
+</div>
+
+<div>
+<h2>100%</h2>
+<span>Offline Ready</span>
+</div>
+
+<div>
+<h2>Fast</h2>
+<span>Local Storage</span>
+</div>
+</div>
+
+</div>
+
+<div class="hero-right">
+
+<div class="dashboard-preview">
+
+<div class="dashboard-top">
+<span></span><span></span><span></span>
+</div>
+
+<div class="mini-card">Task Analytics Active</div>
+<div class="mini-chart"></div>
+<div class="mini-card">Live Productivity Tracking</div>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- ABOUT -->
+<section id="about" class="section">
+
+<h2>About TaskFlow</h2>
+
+<p>
+A productivity-first web application combining intelligent note management,
+task tracking, and product organization into a modern dashboard experience.
+</p>
+
+</section>
+
+<!-- WORKSPACE -->
+<section id="workspace" class="section">
+
+<h2>Workspace</h2>
+
+<div class="workspace-grid">
+
+<!-- NOTES -->
+<div class="glass-card">
+
+<h3>Checklist Notes</h3>
+
+<div class="note-box">
+<input type="text" id="noteInput" placeholder="Add a task...">
+<button onclick="addNote()">Add Task</button>
+</div>
+
+<div id="noteList"></div>
+
+</div>
+
+<!-- PRODUCTS -->
+<div class="glass-card">
+
+<h3>Product Dashboard</h3>
+
+<div class="controls">
+<select id="categoryFilter" onchange="filterProducts()">
+<option value="all">All Categories</option>
+<option value="gadgets">Gadgets</option>
+<option value="books">Books</option>
+</select>
+
+<select id="sortPrice" onchange="sortProducts()">
+<option value="">Sort by Price</option>
+<option value="asc">Low to High</option>
+<option value="desc">High to Low</option>
+</select>
+</div>
+
+<div id="productGrid" class="grid"></div>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- CONTACT -->
+<section id="contact" class="section">
+
+<h2>Contact</h2>
+
+<form class="contact-form">
+
+<input type="text" placeholder="Your Name">
+<input type="email" placeholder="Your Email">
+<textarea rows="4" placeholder="Message"></textarea>
+
+<button type="submit">Send Message</button>
+
+</form>
+
+</section>
+
+<footer>
+<p>© 2026 Baavya Medharamitla</p>
+</footer>
+
+<script src="script.js"></script>
 
 </body>
 </html>
